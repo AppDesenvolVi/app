@@ -96,7 +96,8 @@
       saida.set("page", pagina);
       // ?tipo=kit (Kit Solidário) ou ?tipo=participacao (Participação gratuita). Os nomes antigos (doador, apoiador) seguem aceitos
       // e são convertidos, para links já publicados não quebrarem.
-      var MAPA_TIPO = { kit: "kit", doador: "kit", participacao: "participacao", "participação": "participacao", apoiador: "participacao" };
+      // KIT ENCERRADO: links antigos ?tipo=kit/doador caem na participação gratuita. Versão com kit: { kit: "kit", doador: "kit", ... }
+      var MAPA_TIPO = { kit: "participacao", doador: "participacao", participacao: "participacao", "participação": "participacao", apoiador: "participacao" };
       var tipo = String(entrada.get("tipo") || "").toLowerCase();
       if (pagina === "inscricao" && Object.prototype.hasOwnProperty.call(MAPA_TIPO, tipo)) saida.set("tipo", MAPA_TIPO[tipo]);
       PERMITIDOS.forEach(function (chave) {
